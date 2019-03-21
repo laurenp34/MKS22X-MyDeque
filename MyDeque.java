@@ -9,7 +9,11 @@ public class MyDeque<E>{
   public MyDeque(){
     data = (E[]) new Object[10];
   }
-  public MyDeque(int initialCapacity){  }
+
+  @SuppressWarnings("unchecked")
+  public MyDeque(int initialCapacity){
+    data = (E[]) new Object[initialCapacity];
+  }
   public int size(){ return 0;}
   public String toString(){ return ""; }
   public void addFirst(E element){ }
@@ -20,7 +24,7 @@ public class MyDeque<E>{
   public E getLast(E element){  return element; }
 
   public static void main(String[] args) {
-    MyDeque<String> d = new MyDeque();
+    MyDeque<String> d = new MyDeque(20);
     System.out.println(Arrays.toString(d.data));
   }
 
