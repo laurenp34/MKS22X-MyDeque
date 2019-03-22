@@ -26,6 +26,22 @@ public class MyDeque<E>{
   }
 
   public String toString(){ return ""; }
+
+  private void resize() {
+    Object[] resize = (E[]) new Object[data.length*2 + 1];
+    int dI = start; // index for iterating through data
+    int rI = 0; // index for addingto new array
+    while (rI < size()) {
+      resize[rI] = data[dI];
+      if (rI == data.length-1) dI = 0;
+      rI++;
+      dI++;
+    }
+    start = 0;
+    end = size()-1;
+    data = resize;
+  }
+
   public void addFirst(E element){
     //there is space in the front, and start is before end: add to front and move start back.
     if (start < end && start > 0) {
@@ -34,7 +50,8 @@ public class MyDeque<E>{
       size ++;
     } //there is no more space in array: resize with new element at front.
     else if (size == data.length) {
-      Object[] new = (E[]) 
+      Object[] resize = (E[]) new Object[data.length*2 + 1];
+
     }
   }
   public void addLast(E element){ }
