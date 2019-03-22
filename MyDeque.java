@@ -83,6 +83,7 @@ public class MyDeque<E>{
     MyDeque<Integer> d = new MyDeque<Integer>(20);
     for (int i=0;i<20;i++) {
       d.addFirst(i);
+      System.out.println(Arrays.toString(d.data));
     }
     System.out.println(Arrays.toString(d.data));
     d.addFirst(-5);
