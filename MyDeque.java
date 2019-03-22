@@ -27,8 +27,9 @@ public class MyDeque<E>{
 
   public String toString(){ return ""; }
 
+  @SuppressWarnings("unchecked")
   private void resize() {
-    Object[] resize = (E[]) new Object[data.length*2 + 1];
+    E[] resize = (E[]) new Object[data.length*2 + 1];
     int dI = start; // index for iterating through data
     int rI = 0; // index for addingto new array
     while (rI < size()) {
@@ -39,18 +40,36 @@ public class MyDeque<E>{
     }
     start = 0;
     end = size()-1;
-    data = resize;
+    data = (E[]) resize;
   }
 
   public void addFirst(E element){
+    //first case: start+end are 0 (adding first element)
+    if (start == 0 && end == 0) {
+      data[0] = element;
+      end++;
+      size++;
+      return;
+    }
+    //if start is 0 and there is space at the end
+    else if (start == 0 && end+1 < data.length) {
+      data[end+1] = element;
+      end++;
+      size++;
+      return;
+    }
+
     //there is space in the front, and start is before end: add to front and move start back.
-    if (start < end && start > 0) {
+    else if (start < end && start > 0) {
       data[start-1] = element;
       start --;
       size ++;
+      return;
     } //there is no more space in array: resize with new element at front.
     else if (size == data.length) {
-      Object[] resize = (E[]) new Object[data.length*2 + 1];
+      resize(); // result of resize is start =0 and read straight
+      start = end + 1; // move start to end
+      data[start] = element;
 
     }
   }
@@ -61,7 +80,12 @@ public class MyDeque<E>{
   public E getLast(E element){  return element; }
 
   public static void main(String[] args) {
-    MyDeque<String> d = new MyDeque(20);
+    MyDeque<Integer> d = new MyDeque<Integer>(20);
+    for (int i=0;i<20;i++) {
+      d.addFirst(i);
+    }
+    System.out.println(Arrays.toString(d.data));
+    d.addFirst(-5);
     System.out.println(Arrays.toString(d.data));
   }
 
