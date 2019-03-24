@@ -26,19 +26,16 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    String out = "[";//System.out.println("start: "+start+"size: "+size());
-    int dI = start; // index for iterating through data
-    int rI = 0; // from 0 - size, to indicate when all elements have been copied.
-    while (rI+1 < size()) {
-      //System.out.println("I: "+dI);
-      out += data[dI];
-      out += ", ";
-      rI++;
+    String out = "{";//System.out.println("start: "+start+"size: "+size());
+    int dI = start;
+    while (dI != end) {
+      out+= data[dI]+" ";
       dI++;
-      if (dI == size()) dI = 0; // if the index is out of bounds, start from 0.
+      if (dI == data.length) dI=0;
     }
-    out += data[dI]; // avoid adding last comma.
-    out+= "]";
+    //at this point, dI == end
+    out += data[dI];
+    out+= "}";
     return out;
   }
 
@@ -139,10 +136,7 @@ public class MyDeque<E>{
       else d.addLast(i);
       //d.data[i] = new Integer(4);
     }
-    System.out.println(Arrays.toString(d.data));
-    d.resize();
-    System.out.println(Arrays.toString(d.data));
-    System.out.println("start: "+d.start+"end: "+d.end);
+    System.out.println(d);
   }
 
 }
