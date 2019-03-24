@@ -45,17 +45,18 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   private void resize() {
     E[] resize = (E[]) new Object[data.length*2 + 1];
-    int dI = start; // index for iterating through data
-    int rI = 0; // index for addingto new array
-    while (rI < size()) {
 
-            resize[rI] = data[dI];
-      if (rI == data.length-1) dI = 0;
-      rI++;
-      dI++;
+    int dI = end;
+    int rI = resize.length-1;
+
+    while (dI >= start) {
+      resize[rI] = data[dI];
+      rI--;
+      dI--;
     }
-    start = 0;
-    end = size()-1;
+
+    end = resize.length-1;
+    start = rI+1; // add one because current rI has an extra --
     data = resize;
   }
 
@@ -103,7 +104,7 @@ public class MyDeque<E>{
     }
 
     //start is one after end, meaning there is no space in between. there is also
-    else if (start = end+1) {
+    else if (start == end+1) {
       data[start+1] = element;
       start++;
       size++;
@@ -118,12 +119,12 @@ public class MyDeque<E>{
   public static void main(String[] args) {
     MyDeque<Integer> d = new MyDeque<Integer>(20);
     for (int i=0;i<20;i++) {
-      d.addFirst(i);
-      System.out.println(Arrays.toString(d.data));
+      //d.data[i] = new Integer(4);
     }
     System.out.println(Arrays.toString(d.data));
-    d.addFirst(-5);
-    System.out.println("start: "+d.start+ d);
+    d.resize();
+    System.out.println(Arrays.toString(d.data));
+    System.out.println("start: "+d.start+"end: "+d.end);
   }
 
 }
