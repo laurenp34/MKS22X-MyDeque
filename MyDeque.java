@@ -141,8 +141,14 @@ public class MyDeque<E>{
     size--;
     return temp;
   }
-  public E getFirst(E element){ return element;  }
-  public E getLast(E element){  return element; }
+
+  public E getFirst(){
+    return data[start];
+  }
+
+  public E getLast(E element){
+    return data[end];
+  }
 
   public static void main(String[] args) {
     MyDeque<Integer> d = new MyDeque<Integer>(20);
