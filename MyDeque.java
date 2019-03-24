@@ -90,10 +90,33 @@ public class MyDeque<E>{
       start = data.length-1;
       size++;
     }
+  }
 
+
+  public void addLast(E element){
+    //if this is the first element ever, add to last index and init start and end.
+    if (size() == 0) {
+      data[data.length-1] = element;
+      start = data.length-1;
+      end = data.length-1;
+      size++;
+
+    }
+    //if array is full, resize and add new element to first index.
+    else if (size() == data.length) {
+      resize();
+      data[0] = element;
+      end = 0;
+      size++;
+    }
+    //if end is not at the last index of data (you can add to end+1)
+    else if (end != data.length-1) {
+      data[end+1] = element;
+      end++;
+      size++;
+    }
 
   }
-  public void addLast(E element){ }
   public E removeFirst(E element){ return element; }
   public E removeLast(E element){  return element; }
   public E getFirst(E element){ return element;  }
