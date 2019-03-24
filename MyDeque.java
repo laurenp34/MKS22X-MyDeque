@@ -26,6 +26,7 @@ public class MyDeque<E>{
   }
 
   public String toString(){
+    if (size() == 0) return "{}";
     String out = "{";//System.out.println("start: "+start+"size: "+size());
     int dI = start;
     while (dI != end) {
@@ -152,7 +153,7 @@ public class MyDeque<E>{
     return data[start];
   }
 
-  public E getLast(E element){
+  public E getLast(){
     if (size() ==0) throw new NoSuchElementException("deque is empty");
     return data[end];
   }
