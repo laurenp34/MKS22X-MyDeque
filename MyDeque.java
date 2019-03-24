@@ -127,11 +127,20 @@ public class MyDeque<E>{
   public E removeFirst(){
     E temp = data[start];
     data[start] = null;
-    start++;
+    if (start == data.length-1) start = 0;
+    else start++;
+    size--;
     return temp;
   }
 
-  public E removeLast(E element){  return element; }
+  public E removeLast(){
+    E temp = data[end];
+    data[end] = null;
+    if (end == 0) end = data.length-1;
+    else end --;
+    size--;
+    return temp;
+  }
   public E getFirst(E element){ return element;  }
   public E getLast(E element){  return element; }
 
@@ -144,6 +153,7 @@ public class MyDeque<E>{
     }
     System.out.println(d);
     d.removeFirst();
+    d.removeLast();
     System.out.println(d);
   }
 
