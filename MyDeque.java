@@ -79,36 +79,12 @@ public class MyDeque<E>{
     //if start reached index 0, this means that the array is full. resize
     else if (start == 0) {
       resize();
-    }
-
-    else if (start == 0 && end+1 < data.length) {
-      data[end+1] = element;
-      end++;
-      size++;
-      return;
-    }
-
-    //there is space in the front, and start is before end: add to front and move start back.
-    else if (start < end && start > 0) {
-      data[start-1] = element;
       start --;
-      size ++;
-      return;
-    } //there is no more space in array: resize with new element at front.
-    else if (size == data.length) {
-      resize(); // result of resize is start =0 and read straight
-      start = end + 1; // move start to end
       data[start] = element;
       size++;
-
     }
 
-    //start is one after end, meaning there is no space in between. there is also
-    else if (start == end+1) {
-      data[start+1] = element;
-      start++;
-      size++;
-    }
+
   }
   public void addLast(E element){ }
   public E removeFirst(E element){ return element; }
@@ -119,6 +95,7 @@ public class MyDeque<E>{
   public static void main(String[] args) {
     MyDeque<Integer> d = new MyDeque<Integer>(20);
     for (int i=0;i<20;i++) {
+      d.addFirst(i);
       //d.data[i] = new Integer(4);
     }
     System.out.println(Arrays.toString(d.data));
