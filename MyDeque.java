@@ -69,6 +69,13 @@ public class MyDeque<E>{
       end = data.length-1;
 
     }
+    //if start reached index 0 and the array is full, resize
+    else if (size() == data.length) {
+      resize();
+      start --;
+      data[start] = element;
+      size++;
+    }
     //if start is not 0, there is still room to add to front.
     else if (start > 0) {
       data[start-1] = element;
@@ -76,11 +83,11 @@ public class MyDeque<E>{
       start--;
     }
 
-    //if start reached index 0, this means that the array is full. resize
+    //since passed prev test(array is not full), if start is 0 this means there's still space after end.
+    // move new element to last spqce in array
     else if (start == 0) {
-      resize();
-      start --;
-      data[start] = element;
+      data[data.length-1] = element;
+      start = data.length-1;
       size++;
     }
 
