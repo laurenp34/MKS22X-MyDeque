@@ -62,6 +62,8 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
+
+    if (element == null) throw new NullPointerException("element can't be null");
     //first case: size is 0, add to last index. update start and end.
     if (size == 0) {
       data[data.length-1] = element;
@@ -95,6 +97,9 @@ public class MyDeque<E>{
 
 
   public void addLast(E element){
+
+    if (element == null) throw new NullPointerException("element can't be null");
+
     //if this is the first element ever, add to last index and init start and end.
     if (size() == 0) {
       data[data.length-1] = element;
@@ -143,10 +148,12 @@ public class MyDeque<E>{
   }
 
   public E getFirst(){
+    if (size() ==0) throw new NoSuchElementException("deque is empty");
     return data[start];
   }
 
   public E getLast(E element){
+    if (size() ==0) throw new NoSuchElementException("deque is empty");
     return data[end];
   }
 
