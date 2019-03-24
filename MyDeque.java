@@ -49,14 +49,18 @@ public class MyDeque<E>{
     int dI = end;
     int rI = resize.length-1;
 
-    while (dI >= start) {
+    while (dI != start) {
+
       resize[rI] = data[dI];
       rI--;
       dI--;
+      if (dI == -1) dI = data.length-1;
     }
+    //dI = start here, last time to copy data over
+    resize[rI] = data[dI];
 
     end = resize.length-1;
-    start = rI+1; // add one because current rI has an extra --
+    start = rI-1; // add one because current rI has an extra --
     data = resize;
   }
 
