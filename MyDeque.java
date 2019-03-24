@@ -26,16 +26,16 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    String out = "[";System.out.println("start: "+start+"size: "+size());
+    String out = "[";//System.out.println("start: "+start+"size: "+size());
     int dI = start; // index for iterating through data
     int rI = 0; // from 0 - size, to indicate when all elements have been copied.
     while (rI+1 < size()) {
-      System.out.println("I: "+dI);
+      //System.out.println("I: "+dI);
       out += data[dI];
       out += ", ";
       rI++;
       dI++;
-      if (dI == size()) dI = 0;
+      if (dI == size()) dI = 0; // if the index is out of bounds, start from 0.
     }
     out += data[dI]; // avoid adding last comma.
     out+= "]";
@@ -60,12 +60,13 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
-    //first case: size is 0, add to first index without updating end.
+    //first case: size is 0, add to last index. update start and end.
     if (size == 0) {
-      data[0] = element;
-      //end++; Don't increase end becuase it should still be 0.
-      size++;
-      return;
+      data[data.length-1] = element;
+      size ++;
+      start = data.length-1;
+      end = data.length-1;
+
     }
     //if start is 0 and there is space at the end
     else if (start == 0 && end+1 < data.length) {
@@ -88,6 +89,13 @@ public class MyDeque<E>{
       data[start] = element;
       size++;
 
+    }
+
+    //start is one after end, meaning there is no space in between. there is also
+    else if (start = end+1) {
+      data[start+1] = element;
+      start++;
+      size++;
     }
   }
   public void addLast(E element){ }
