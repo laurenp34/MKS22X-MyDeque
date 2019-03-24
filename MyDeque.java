@@ -68,7 +68,18 @@ public class MyDeque<E>{
       end = data.length-1;
 
     }
-    //if start is 0 and there is space at the end
+    //if start is not 0, there is still room to add to front.
+    else if (start > 0) {
+      data[start-1] = element;
+      size++;
+      start--;
+    }
+
+    //if start reached index 0, this means that the array is full. resize
+    else if (start == 0) {
+      resize();
+    }
+
     else if (start == 0 && end+1 < data.length) {
       data[end+1] = element;
       end++;
