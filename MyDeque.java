@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 public class MyDeque<E>{
   private E[] data;
-  private int size, start, end;
+  private int size, start, end; //start and end are inclusive.
 
 
   @SuppressWarnings("unchecked")
@@ -40,14 +40,14 @@ public class MyDeque<E>{
     }
     start = 0;
     end = size()-1;
-    data = (E[]) resize;
+    data = resize;
   }
 
   public void addFirst(E element){
     //first case: start+end are 0 (adding first element)
-    if (start == 0 && end == 0) {
+    if (size == 0) {
       data[0] = element;
-      end++;
+      //end++; Don't increase end becuase it should still be 0.
       size++;
       return;
     }
