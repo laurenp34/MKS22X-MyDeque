@@ -25,7 +25,22 @@ public class MyDeque<E>{
     return size;
   }
 
-  public String toString(){ return ""; }
+  public String toString(){
+    String out = "[";
+    int dI = start; // index for iterating through data
+    int rI = 0; // from 0 - size, to indicate when all elements have been copied.
+    while (rI+1 < size()) {
+      System.out.println("I: "+dI);
+      out += data[dI];
+      out += ", ";
+      if (rI == size()) dI = 0;
+      rI++;
+      dI++;
+    }
+    out += data[dI]; // avoid adding last comma.
+    out+= "]";
+    return out;
+  }
 
   @SuppressWarnings("unchecked")
   private void resize() {
@@ -33,7 +48,8 @@ public class MyDeque<E>{
     int dI = start; // index for iterating through data
     int rI = 0; // index for addingto new array
     while (rI < size()) {
-      resize[rI] = data[dI];
+
+            resize[rI] = data[dI];
       if (rI == data.length-1) dI = 0;
       rI++;
       dI++;
@@ -44,7 +60,7 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
-    //first case: start+end are 0 (adding first element)
+    //first case: size is 0, add to first index without updating end.
     if (size == 0) {
       data[0] = element;
       //end++; Don't increase end becuase it should still be 0.
@@ -70,6 +86,7 @@ public class MyDeque<E>{
       resize(); // result of resize is start =0 and read straight
       start = end + 1; // move start to end
       data[start] = element;
+      size++;
 
     }
   }
@@ -87,7 +104,7 @@ public class MyDeque<E>{
     }
     System.out.println(Arrays.toString(d.data));
     d.addFirst(-5);
-    System.out.println(Arrays.toString(d.data));
+    System.out.println("start: "+d.start+ d);
   }
 
 }
