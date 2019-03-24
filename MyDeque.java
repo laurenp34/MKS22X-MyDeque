@@ -33,9 +33,9 @@ public class MyDeque<E>{
       System.out.println("I: "+dI);
       out += data[dI];
       out += ", ";
-      if (dI == size()) dI = 0;
       rI++;
       dI++;
+      if (dI == size()) dI = 0;
     }
     out += data[dI]; // avoid adding last comma.
     out+= "]";
