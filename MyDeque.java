@@ -115,6 +115,12 @@ public class MyDeque<E>{
       end++;
       size++;
     }
+    //else: if end is at last index but there is space in front.
+    else {
+      data[0] = element;
+      end = 0;
+      size++;
+    }
 
   }
   public E removeFirst(E element){ return element; }
@@ -125,7 +131,8 @@ public class MyDeque<E>{
   public static void main(String[] args) {
     MyDeque<Integer> d = new MyDeque<Integer>(20);
     for (int i=0;i<20;i++) {
-      d.addFirst(i);
+      if (i<10) d.addFirst(i);
+      else d.addLast(i);
       //d.data[i] = new Integer(4);
     }
     System.out.println(Arrays.toString(d.data));
