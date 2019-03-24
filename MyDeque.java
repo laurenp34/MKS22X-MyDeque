@@ -26,14 +26,14 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    String out = "[";
+    String out = "[";System.out.println("start: "+start+"size: "+size());
     int dI = start; // index for iterating through data
     int rI = 0; // from 0 - size, to indicate when all elements have been copied.
     while (rI+1 < size()) {
       System.out.println("I: "+dI);
       out += data[dI];
       out += ", ";
-      if (rI == size()) dI = 0;
+      if (dI == size()) dI = 0;
       rI++;
       dI++;
     }
