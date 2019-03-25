@@ -58,7 +58,7 @@ public class MyDeque<E>{
     resize[rI] = data[dI];
 
     end = resize.length-1;
-    start = rI-1; // add one because current rI has an extra --
+    start = rI; 
     data = resize;
   }
 
@@ -161,12 +161,13 @@ public class MyDeque<E>{
   }
 
   public static void main(String[] args) {
-    MyDeque<Integer> d = new MyDeque<Integer>(20);
-    for (int i=0;i<20;i++) {
+    MyDeque<Integer> d = new MyDeque<Integer>(10);
+    for (int i=0;i<10;i++) {
       if (i<10) d.addFirst(i);
-      else d.addLast(i);
       //d.data[i] = new Integer(4);
     }
+    d.addLast(10);
+    System.out.println("first: "+d.start+"last: "+d.end+" "+Arrays.toString(d.data));
     System.out.println(d);
     d.removeFirst();
     d.removeLast();
