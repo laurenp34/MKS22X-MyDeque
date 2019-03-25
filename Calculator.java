@@ -7,7 +7,7 @@ public class Calculator{
       String[] split = s.split(" ");
       MyDeque<Double> nums = new MyDeque<Double>();
 
-      int num = 0;
+      double num = 0;
       int i=0; // iterate through split array.
       while (i < split.length) {
         try {
@@ -21,47 +21,47 @@ public class Calculator{
             //need to remove right away so getLast() works next.
             nums.removeLast();
 
-            int n2 = nums.getLast();
+            double n2 = nums.getLast();
             nums.removeLast();
             //add the sum to nums
             nums.addLast(n1+n2);
           }
           else if (cur.equals("-")) {
-            int n1 = nums.getLast();
+            double n1 = nums.getLast();
             //need to remove right away so getLast() works next.
             nums.removeLast();
 
-            int n2 = nums.getLast();
+            double n2 = nums.getLast();
             nums.removeLast();
             //add the sum to nums
             nums.addLast(n1-n2);
           }
           else if (cur.equals("*")) {
-            int n1 = nums.getLast();
+            double n1 = nums.getLast();
             //need to remove right away so getLast() works next.
             nums.removeLast();
 
-            int n2 = nums.getLast();
+            double n2 = nums.getLast();
             nums.removeLast();
             //add the sum to nums
             nums.addLast(n1*n2);
           }
           else if (cur.equals("/")) {
-            int n1 = nums.getLast();
+            double n1 = nums.getLast();
             //need to remove right away so getLast() works next.
             nums.removeLast();
 
-            int n2 = nums.getLast();
+            double n2 = nums.getLast();
             nums.removeLast();
             //add the sum to nums
             nums.addLast((double) n1/(double) n2);
           }
           else if (cur.equals("%")) {
-            int n1 = nums.getLast();
+            double n1 = nums.getLast();
             //need to remove right away so getLast() works next.
             nums.removeLast();
 
-            int n2 = nums.getLast();
+            double n2 = nums.getLast();
             nums.removeLast();
             //add the sum to nums
             nums.addLast(n1%n2);
