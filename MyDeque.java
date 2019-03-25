@@ -131,6 +131,7 @@ public class MyDeque<E>{
   }
 
   public E removeFirst(){
+    if (size() ==0) throw new NoSuchElementException("deque is empty");
     E temp = data[start];
     data[start] = null;
     if (start == data.length-1) start = 0;
@@ -140,6 +141,7 @@ public class MyDeque<E>{
   }
 
   public E removeLast(){
+    if (size() ==0) throw new NoSuchElementException("deque is empty");
     E temp = data[end];
     data[end] = null;
     if (end == 0) end = data.length-1;
