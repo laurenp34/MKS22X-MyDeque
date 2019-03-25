@@ -18,9 +18,12 @@ public class Calculator{
           String cur = split[i];
           if (cur.equals("+")) {
             int n1 = nums.getLast();
+            //need to remove right away so getLast() works next.
+            nums.removeLast();
+
             int n2 = nums.getLast();
             nums.removeLast();
-            nums.removeLast();
+            //add the sum to nums
             nums.addLast(n1+n2);
           }
         }
