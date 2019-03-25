@@ -5,7 +5,7 @@ public class Calculator{
     public static double eval(String s){
       //first, split the string into smaller strings
       String[] split = s.split(" ");
-      MyDeque<Integer> nums = new MyDeque<Integer>();
+      MyDeque<Double> nums = new MyDeque<Double>();
 
       int num = 0;
       int i=0; // iterate through split array.
@@ -17,7 +17,7 @@ public class Calculator{
           //reaches here if not a number.
           String cur = split[i];
           if (cur.equals("+")) {
-            int n1 = nums.getLast();
+            double n1 = nums.getLast();
             //need to remove right away so getLast() works next.
             nums.removeLast();
 
@@ -73,6 +73,6 @@ public class Calculator{
 
   }
   public static void main(String[] args) {
-    System.out.println(eval("2 3 +"));
+    System.out.println(eval("1 2 3 4 5 + * - -") );
   }
 }
