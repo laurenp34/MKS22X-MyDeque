@@ -26,6 +26,46 @@ public class Calculator{
             //add the sum to nums
             nums.addLast(n1+n2);
           }
+          else if (cur.equals("-")) {
+            int n1 = nums.getLast();
+            //need to remove right away so getLast() works next.
+            nums.removeLast();
+
+            int n2 = nums.getLast();
+            nums.removeLast();
+            //add the sum to nums
+            nums.addLast(n1-n2);
+          }
+          else if (cur.equals("*")) {
+            int n1 = nums.getLast();
+            //need to remove right away so getLast() works next.
+            nums.removeLast();
+
+            int n2 = nums.getLast();
+            nums.removeLast();
+            //add the sum to nums
+            nums.addLast(n1*n2);
+          }
+          else if (cur.equals("/")) {
+            int n1 = nums.getLast();
+            //need to remove right away so getLast() works next.
+            nums.removeLast();
+
+            int n2 = nums.getLast();
+            nums.removeLast();
+            //add the sum to nums
+            nums.addLast((double) n1/(double) n2);
+          }
+          else if (cur.equals("%")) {
+            int n1 = nums.getLast();
+            //need to remove right away so getLast() works next.
+            nums.removeLast();
+
+            int n2 = nums.getLast();
+            nums.removeLast();
+            //add the sum to nums
+            nums.addLast(n1%n2);
+          }
         }
         i++;
       }
