@@ -12,7 +12,7 @@ public class Calculator{
       while (i < split.length) {
         //System.out.println(nums);
         try {
-          num = Integer.parseInt(split[i]);
+          num = Double.parseDouble(split[i]);
           nums.addLast(num);
         }catch (NumberFormatException e) {
           //reaches here if not a number.
@@ -76,5 +76,6 @@ public class Calculator{
   public static void main(String[] args) {
     System.out.println(eval("1 2 3 4 5 + * - -") );
     System.out.println(eval("8 2 + 99 9 - * 2 + 9 -"));
+    System.out.println(eval("5.4 -1 +"));
   }
 }
